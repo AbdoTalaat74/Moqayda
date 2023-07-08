@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_home"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.moqayda.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_productsListFragment"
+            app:destination="@id/productsListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_selectCategoryFragment"
+            app:destination="@id/selectCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.moqayda.ui.favorite.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.example.moqayda.ui.chatRequests.RequestsFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_requests">
+        <action
+            android:id="@+id/action_requestFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.moqayda.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_profileEdittingFragment"
+            app:destination="@id/profileEditingFragment"/>
+        <action
+            android:id="@+id/action_profileFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_privateProductsFragment"
+            app:destination="@id/privateProductsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_userPublicItemsFragment"
+            app:destination="@id/userPublicItemsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_swapOffersFragment"
+            app:destination="@id/swapPrivateOffersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_swapOffersOfPublicItemsFragment"
+            app:destination="@id/swapOffersOfPublicItemsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_completedBartersFragment"
+            app:destination="@id/completedBartersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_sentOffersFragment"
+            app:destination="@id/sentOffersFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/productsListFragment"
+        android:name="com.example.moqayda.ui.products.ProductFragment"
+        android:label="ProductsListFragment"
+        tools:layout="@layout/fragment_products">
+
+
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_productsListFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_productsListFragment_to_otherUserProfileFragment"
+            app:destination="@id/otherUserProfileFragment" />
+        <action
+            android:id="@+id/action_productsListFragment_to_selectCategoryFragment"
+            app:destination="@id/selectCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.example.moqayda.ui.addProduct.AddProductFragment"
+        android:label="AddProductFragment"
+        tools:layout="@layout/fragment_add_product">
+        <argument
+            android:name="selectedCategory"
+            app:argType="com.example.moqayda.models.CategoryItem" />
+        <action
+            android:id="@+id/action_addProductFragment_to_selectCategoryFragment"
+            app:destination="@id/selectCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectCategoryFragment"
+        android:name="com.example.moqayda.ui.selectCategory.SelectCategoryFragment"
+        android:label="SelectCategoryFragment"
+        tools:layout="@layout/fragment_select_category">
+        <action
+            android:id="@+id/action_selectCategoryFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment"
+            app:popUpTo="@id/selectCategoryFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="selectedProduct"
+
+            app:argType="com.example.moqayda.models.Product"
+            app:nullable="true" />
+        <argument
+            android:name="isUpdate"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_selectCategoryFragment_to_updateProductFragment"
+            app:destination="@id/updateProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.moqayda.ui.product_details.ProductDetailsFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_product_details" >
+        <action
+            android:id="@+id/action_productDetailsFragment_to_swappingItemFragment"
+            app:destination="@id/swappingItemFragment" />
+        <argument
+            android:name="selectedProduct"
+            app:argType="com.example.moqayda.models.Product" />
+        <action
+            android:id="@+id/action_productDetailsFragment_to_otherUserProfileFragment"
+            app:destination="@id/otherUserProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/swappingItemFragment"
+        android:name="com.example.moqayda.ui.swapping_items.SwappingItemFragment"
+        android:label="fragment_swapping_item"
+        tools:layout="@layout/fragment_swapping_item" >
+        <argument
+            android:name="selectedProduct"
+            app:argType="com.example.moqayda.models.Product" />
+        <action
+            android:id="@+id/action_swappingItemFragment_to_privateProductsFragment"
+            app:destination="@id/privateProductsFragment" />
+        <action
+            android:id="@+id/action_swappingItemFragment_to_userPublicItemsFragment"
+            app:destination="@id/userPublicItemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPrivateProductFragment"
+        android:name="com.example.moqayda.ui.add_private_product.AddPrivateProductFragment"
+        android:label="fragment_add_private_product"
+        tools:layout="@layout/fragment_add_private_product" >
+        <action
+            android:id="@+id/action_addPrivateProductFragment_to_privateProductsFragment"
+            app:destination="@id/privateProductsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.moqayda.ui.chat.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="selectedRequest"
+            app:argType="com.example.moqayda.models.MessageRequest" />
+        <argument
+            android:name="selectedUser"
+            app:argType="com.example.moqayda.models.AppUser" />
+        <action
+            android:id="@+id/action_chatFragment_to_otherUserProfileFragment"
+            app:destination="@id/otherUserProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileEditingFragment"
+        android:name="com.example.moqayda.ui.profile_editting.ProfileEditingFragment"
+        android:label="fragment_profile_editting"
+        tools:layout="@layout/fragment_profile_editting" >
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.moqayda.models.AppUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.moqayda.ui.setting.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_appTermsFragment"
+            app:destination="@id/appTermsFragment" />
+        <action
+            android:id="@+id/action_settingFragment_to_blockedUsersFragment"
+            app:destination="@id/blockedUsersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privateProductsFragment"
+        android:name="com.example.moqayda.ui.private_product.PrivateProductsFragment"
+        android:label="fragment_private_products"
+        tools:layout="@layout/fragment_private_products" >
+        <action
+            android:id="@+id/action_privateProductsFragment_to_addPrivateProductFragment"
+            app:destination="@id/swapPrivateItemRequestFragment" />
+        <argument
+            android:id="@+id/my_arg_id"
+            android:name="isVisible"
+            app:argType="boolean"
+            />
+        <action
+            android:id="@+id/action_privateProductsFragment_to_swapRequestFragment"
+            app:destination="@id/swapPrivateItemRequestFragment" />
+        <argument
+            android:name="product"
+            app:argType="com.example.moqayda.models.Product"
+            app:nullable="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/swapPrivateItemRequestFragment"
+        android:name="com.example.moqayda.ui.swap_private_item_request.SwapPrivateItemRequestFragment"        android:label="fragment_swap_request"
+        tools:layout="@layout/fragment_swap_private_item_request" >
+        <argument
+            android:name="privateItemId"
+            app:argType="integer" />
+        <argument
+            android:name="product"
+            app:argType="com.example.moqayda.models.Product"
+            app:nullable="true" />
+        <argument
+            android:name="privateItemImage"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="privateItemName"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/userPublicItemsFragment"
+        android:name="com.example.moqayda.ui.user_public_items.UserPublicItemsFragment"
+        android:label="fragment_user_public_items"
+        tools:layout="@layout/fragment_user_public_products" >
+        <argument
+            android:name="isVisibleSwapLinear"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_userPublicItemsFragment_to_swapPublicItemRequestFragment"
+            app:destination="@id/swapPublicItemRequestFragment" />
+        <argument
+            android:name="product"
+            app:argType="com.example.moqayda.models.Product"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_userPublicItemsFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_userPublicItemsFragment_to_updateProductFragment"
+            app:destination="@id/updateProductFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/swapPublicItemRequestFragment"
+        android:name="com.example.moqayda.ui.swap_public_item_request.SwapPublicItemRequestFragment"
+        android:label="fragment_swap_public_item_request"
+        tools:layout="@layout/fragment_swap_public_item_request" >
+        <argument
+            android:name="senderRequestProduct"
+            app:argType="com.example.moqayda.models.Product"
+            app:nullable="true" />
+        <argument
+            android:name="product"
+            app:argType="com.example.moqayda.models.Product"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_other_user_profile"
+        android:id="@+id/otherUserProfileFragment"
+        android:name="com.example.moqayda.ui.otherUserProfile.OtherUserProfileFragment"
+        android:label="OtherUserProfileFragment">
+        <argument
+            android:name="selectedUser"
+            app:argType="com.example.moqayda.models.AppUser" />
+        <action
+            android:id="@+id/action_otherUserProfileFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateProductFragment"
+        android:name="com.example.moqayda.ui.updateProduct.UpdateProductFragment"
+        android:label="UpdateProductFragment"
+        tools:layout="@layout/fragment_update_product">
+        <argument
+            android:name="selectedProduct"
+            app:argType="com.example.moqayda.models.Product"
+
+            />
+        <action
+            android:id="@+id/action_updateProductFragment_to_selectCategoryFragment"
+            app:destination="@id/selectCategoryFragment" />
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_updateProductFragment_to_userPublicItemsFragment"
+            app:destination="@id/userPublicItemsFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/swapPrivateOffersFragment"
+        android:name="com.example.moqayda.ui.swap_private_offers.SwapPrivateOffersFragment"
+        android:label="fragment_swap_offers"
+        tools:layout="@layout/fragment_swap_private_offers" >
+        <action
+            android:id="@+id/action_swapPrivateOffersFragment_to_swapPrivateOffersDetailsFragment"
+            app:destination="@id/swapPrivateOffersDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/swapPrivateOffersDetailsFragment"
+        android:name="com.example.moqayda.ui.swap_private_offers_details.SwapPrivateOffersDetailsFragment"
+        android:label="fragment_swap_private_offers_details"
+        tools:layout="@layout/fragment_swap_private_offers_details" >
+        <argument
+            android:name="productId"
+            app:argType="integer" />
+        <argument
+            android:name="privateItemId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/swapOffersOfPublicItemsFragment"
+        android:name="com.example.moqayda.ui.swa_public_offers.SwapOffersOfPublicItemsFragment"
+        android:label="fragment_swap_offers_of_public_items"
+        tools:layout="@layout/fragment_swap_offers_of_public_items" >
+        <action
+            android:id="@+id/action_swapOffersOfPublicItemsFragment_to_swapPublicOffersDetailsFragment"
+            app:destination="@id/swapPublicOffersDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/swapPublicOffersDetailsFragment"
+        android:name="com.example.moqayda.ui.swap_public_offers_details.SwapPublicOffersDetailsFragment"
+        android:label="fragment_swap_public_offers_details"
+        tools:layout="@layout/fragment_swap_public_offers_details" >
+        <argument
+            android:name="senderProductId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_swapPublicOffersDetailsFragment_to_requestFragment"
+            app:destination="@id/requestFragment" />
+        <argument
+            android:name="receiverProductId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/appTermsFragment"
+        android:name="com.example.moqayda.ui.AppTermsFragment"
+        android:label="fragment_app_terms"
+        tools:layout="@layout/fragment_app_terms" />
+    <fragment
+        tools:layout="@layout/fragment_completed_barter"
+        android:id="@+id/completedBartersFragment"
+        android:name="com.example.moqayda.ui.completedBarters.CompletedBartersFragment"
+        android:label="CompletedBartersFragment" />
+    <fragment
+        tools:layout="@layout/fragment_sent_offers"
+        android:id="@+id/sentOffersFragment"
+        android:name="com.example.moqayda.ui.sentOffers.SentOffersFragment"
+        android:label="SentOffersFragment" />
+    <fragment
+        tools:layout="@layout/fragment_blocked_users"
+        android:id="@+id/blockedUsersFragment"
+        android:name="com.example.moqayda.ui.blockedUsers.BlockedUsersFragment"
+        android:label="BlockedUsersFragment" />
+
+</navigation>
